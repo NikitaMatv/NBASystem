@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="NBASystem.UserControls.UserControlList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="400">
+    <Border BorderThickness="0.5"
+    BorderBrush="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0 0 0 0.5"
+            BorderBrush="Black"
+            Background="#FFD2D2D2">
+                <TextBlock Text="{Binding Division.Name}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+            </Border>
+            <ListView Grid.Row="1"
+                      Name="LVGrid"
+                      BorderThickness="0"
+                      d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=LVGrid, Mode=OneWay}" 
+                                Margin="-6 5 0 5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="50"
+                                   Height="50"
+                                   Source="{Binding Inage}"
+                                   Grid.RowSpan="4"/>
+                            <TextBlock Grid.Column="2"
+                                       Text="{Binding Name}"/>
+                            <Grid Grid.Column="2"
+                                  Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Roster"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="8"/>
+                                <TextBlock Text="Matchup"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="8"/>
+                                <TextBlock Text="First Lineup"
+                                           Grid.Column="2"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="8"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Border>
+</UserControl>
